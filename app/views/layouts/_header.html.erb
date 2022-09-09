@@ -7,9 +7,9 @@
   plugins: [require('@tailwindcss/forms')]
 -->
 
-<header class="shadow-sm">
+<header class="nav-header shadow-sm">
   <div
-    class="flex items-center justify-between h-16 px-4 mx-auto max-w-screen-xl" style="height: 80px; align-items: center"
+    class="flex items-center justify-between h-16 px-4 mx-auto max-w-screen-xl nav-container"
   >
     <div class="flex flex-1 w-0 lg:hidden">
       <button class="p-2 text-gray-600 bg-gray-100 rounded-full" type="button">
@@ -31,8 +31,8 @@
     </div>
 
     <div class="flex items-center space-x-4">
-      <%= link_to root_path do %>
-        <span class="w-20 h-10 bg-gray-200 rounded-lg"><%= image_tag("logo.png") %></span>
+      <%= link_to root_path, class: "logo-link" do %>
+        <span class="w-20 h-10 bg-gray-200 rounded-lg logo-image"><%= image_tag("logo.png") %></span>
       <% end %>
 
       <form class="hidden mb-0 lg:flex">
