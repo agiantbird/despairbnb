@@ -7,12 +7,13 @@
   plugins: [require('@tailwindcss/forms')]
 -->
 
-<header class="nav-header shadow-sm">
+<header class="nav-header shadow-sm" data-controller="header">
   <div
     class="flex items-center justify-between h-16 px-4 mx-auto max-w-screen-xl nav-container"
   >
     <div class="flex flex-1 w-0 lg:hidden">
-      <button class="p-2 text-gray-600 bg-gray-100 rounded-full" type="button">
+<!--      avatar/proile icon -->
+      <button class="p-2 text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200" type="button">
         <svg
           class="w-5 h-5"
           fill="none"
@@ -38,7 +39,7 @@
       <form class="hidden mb-0 lg:flex">
         <div class="relative">
           <input
-            class="h-10 pr-10 text-sm placeholder-gray-300 border-gray-200 rounded-lg focus:z-10"
+            class="h-10 pr-10 text-sm placeholder-gray-300 border-gray-200 hover:bg-gray-100 rounded-lg focus:z-10"
             placeholder="Search..."
             type="text"
             />
@@ -65,7 +66,7 @@
     </div>
 
     <div class="flex justify-end flex-1 w-0 lg:hidden">
-      <button class="p-2 text-gray-500 bg-gray-100 rounded-full" type="button">
+      <button class="p-2 text-gray-500 bg-gray-100 rounded-full hover:bg-gray-200" type="button">
         <svg
           class="w-5 h-5"
           fill="currentColor"
