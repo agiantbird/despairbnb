@@ -1,6 +1,25 @@
-<section data-controller="modal" class="hidden shadow-2xl rounded-3xl">
-  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
-  <div class="relative p-8 top-24 bg-white text-center sm:p-16">
+<section
+  data-controller="modal"
+  id="modal-wrapper"
+  class="hidden shadow-2xl rounded-3xl"
+  data-transition-enter="ease-out duration-300"
+  data-transition-enter-start="opacity-0 scale-95"
+  data-transition-enter-end="opacity-100 scale-100"
+  data-transition-leave="ease-in duration-200"
+  data-transition-leave-start="opacity-100 scale-100"
+  data-transition-leave-end="opacity-0 scale-95"
+>
+  <div class="hidden" id="modal-trigger" data-action="click->modal#showModal"></div>
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+       id="modal-shadow"
+       data-transition-enter="ease-out duration-300"
+       data-transition-enter-start="opacity-0 scale-95"
+       data-transition-enter-end="opacity-100 scale-100"
+       data-transition-leave="ease-in duration-200"
+       data-transition-leave-start="opacity-100 scale-100"
+       data-transition-leave-end="opacity-0 scale-95"
+  >
+  <div id="modal-panel" class="relative p-8 top-24 bg-white text-center sm:p-16">
     <p class="text-sm font-semibold tracking-widest text-pink-500 uppercase">Your order is on the way</p>
 
     <h5 class="mt-6 text-3xl font-bold">Thanks for your purchase, we're getting it ready!</h5>
