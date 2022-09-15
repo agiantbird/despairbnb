@@ -19,8 +19,19 @@
        data-transition-leave-start="opacity-100 scale-100"
        data-transition-leave-end="opacity-0 scale-95"
   >
-  <div id="modal-panel" class="relative p-4 inset-1/3 bg-white sm:p-16 max-w-sm">
-    <h3 class="mt-6 text-sm font-bold">Log in or sign up</h3>
+  <div id="modal-panel" class="relative p-4 inset-1/3 bg-white sm:p-8 max-w-lg">
+    <div>
+      <div class="flex">
+        <div class="flex-none cursor-pointer hover:bg-gray-100" data-modal-target="closeButton">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+        <div class="items-center pl-32">
+          <h3 class="text-sm font-bold">Log in or sign up</h3>
+        </div>
+      </div>
+
 
     <div class="relative">
       <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -30,8 +41,10 @@
 <!--        <span class="px-2 bg-white text-sm text-gray-500">Continue</span>-->
 <!--      </div>-->
     </div>
+    </div>
 
     <h4 class="text-xl mt-8 leading-6 text-gray-900">Welcome to DespairBnB</h4>
+
 
     <form action="" class="max-w-md mx-auto mt-8 mb-0 space-y-4">
       <div>

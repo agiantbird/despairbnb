@@ -2,9 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 import {enter, leave, toggle} from 'el-transition'
 
 export default class extends Controller {
+    static targets = ['closeButton'];
     connect() {
-        console.log('hello, we are inside the modal controller')
         document.getElementById('modal-wrapper').addEventListener('click', this.closeModal);
+        this.closeButtonTarget.addEventListener('click', () => {
+            leave(document.getElementById('modal-wrapper'));
+            leave(document.getElementById('modal-shadow'));
+            leave(document.getElementById('modal-panel'));
+        });
     }
 
     closeModal(event) {
