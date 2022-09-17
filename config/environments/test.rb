@@ -10,6 +10,8 @@ Rails.application.configure do
 
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
   config.cache_classes = true
+  # prevent new css color syntax and sassc-rails gem incompatibility issues from rising when running specs
+  config.assets.css_compressor = nil
 
   # Eager loading loads your whole application. When running a single test locally,
   # this probably isn't necessary. It's a good idea to do in a continuous integration
