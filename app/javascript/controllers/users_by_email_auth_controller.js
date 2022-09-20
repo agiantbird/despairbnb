@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import axios from 'axios';
 
 export default class extends Controller {
-    static targets = ['email', 'submit'];
+    static targets = ['email', 'submit', 'errorMessage'];
     connect() {
         console.log('axios: ', axios)
         this.submitTarget.addEventListener('click', (e) => {
@@ -10,10 +10,10 @@ export default class extends Controller {
 
             if(this.emailTarget.value.length === 0) {
                 console.log('inside if email field is empty')
-                //email field is empty so don't do anything
+                this.emailTarget.classList.add('invalid-inset-input-text-field');
+                this.emailTarget.classList.remove('border-gray-200');
+                this.errorMessageTarget.classList.remove('hidden');
             } else {
-                // email field is filled out so do something
-                // console.log('hey we have content')
                 axios.get('/api/users_by_email', {
                     params: {
                         email: this.emailTarget.value

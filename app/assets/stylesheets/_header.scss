@@ -7,3 +7,19 @@
   align-items: center;
   //background-color: $test-color-variable;
 }
+
+.invalid-inset-input-text-field {
+  border-color: red !important;
+  color: red !important;
+
+  label {
+    color: red !important;
+  }
+
+  input[type="email"], input[type="text"] {
+    &:focus {
+      border-color: red !important;
+    }
+    color: red !important;
+  }
+}
