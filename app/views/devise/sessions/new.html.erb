@@ -1,26 +1,62 @@
-g<h2>Log in</h2>
+<!--
+  This component uses @tailwindcss/forms
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  yarn add @tailwindcss/forms
+  npm install @tailwindcss/forms
+
+  plugins: [require('@tailwindcss/forms')]
+-->
+
+<div class="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+  <div class="max-w-lg mx-auto text-center">
+    <h1 class="text-2xl font-bold sm:text-3xl">Log In</h1>
+
+    <p class="mt-4 text-gray-500">
+      Welcome back to hell!
+    </p>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "max-w-md mx-auto mt-8 mb-0 space-y-4"}) do |f| %>
+    <div>
+      <div class="relative">
+      </div>
+      <%= f.label :email, "Email Address", class: "sr-only" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", placeholder: "Enter email"  %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <div>
+      <label for="password" class="sr-only">Password</label>
+      <%= f.label :password, class: "sr-only" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", placeholder: "Enter password" %>
+      <% if @minimum_password_length %>
+        <span class="text-sm text-gray-500"><em>(<%= @minimum_password_length %> characters minimum)</em></span>
+      <% end %><br />
+      <div class="relative">
+      </div>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <% if devise_mapping.rememberable? %>
+      <div class="field text-sm text-gray-500">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+    <div class="text-sm text-indigo-600 hover:text-indigo-500 hover:cursor-pointer">
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+      <% end %>
+    </div>
+
+
+    <div class="flex items-center justify-between">
+      <p class="text-sm text-gray-500">
+        Don't have an account?
+        <%= link_to "Sign up", new_user_registration_path, class: "text-indigo-600 hover:text-indigo-500" %>
+      </p>
+
+      <%= f.submit class: "hover:cursor-pointer hover:bg-blue-600 inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-blue-500 rounded-lg" do %>
+        Log in
+      <% end %>
+    </div>
+  <% end  %>
+</div>
