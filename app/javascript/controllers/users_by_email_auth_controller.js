@@ -4,12 +4,10 @@ import axios from 'axios';
 export default class extends Controller {
     static targets = ['email', 'submit', 'errorMessage'];
     connect() {
-        console.log('axios: ', axios)
         this.submitTarget.addEventListener('click', (e) => {
             e.preventDefault();
 
             if(this.emailTarget.value.length === 0) {
-                console.log('inside if email field is empty')
                 this.emailTarget.classList.add('invalid-inset-input-text-field');
                 this.emailTarget.classList.remove('border-gray-200');
                 this.errorMessageTarget.classList.remove('hidden');
