@@ -20,4 +20,8 @@ class Property < ApplicationRecord
   def address
     [state, country].compact.join(', ')
   end
+
+  def default_image
+    images.first
+  end
 end
