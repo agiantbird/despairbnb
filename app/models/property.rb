@@ -16,6 +16,7 @@ class Property < ApplicationRecord
   after_validation :geocode, if: ->(obj){ obj.latitude.blank? && obj.longitude.blank? }
 
   has_many_attached :images, dependent: :destroy
+  has_many :reviews, as: :reviewable
 
   def address
     [state, country].compact.join(', ')
