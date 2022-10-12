@@ -33,7 +33,6 @@ export default class extends Controller {
                 this.getUserCoordinates(),
                 { latitude: propertyTarget.dataset.latitude, longitude: propertyTarget.dataset.longitude} ,
             );
-            console.log('distanceFrom ', convertDistance(distanceFrom, 'km'));
             propertyTarget.querySelector('[data-distance-away]').innerHTML = `${Math.ceil(convertDistance(distanceFrom, 'km'))} km away`;
         });
     }
