@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   # associations
   has_one :profile, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_properties, through: :favorites, source: :property
 
   # callbacks
   after_create :create_profile
