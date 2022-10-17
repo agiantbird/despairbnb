@@ -28,6 +28,7 @@
               stroke="currentColor"
               class="w-6 h-6 cursor-pointer"
               data-controller="favorites"
+              data-user-logged-in="<%= user_signed_in? %>"
               data-favorited="false"
               data-action="click->favorites#favorite"
             >
