@@ -1,4 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
+import axios from 'axios';
 
 export default class extends Controller {
     favorite() {
@@ -9,8 +10,17 @@ export default class extends Controller {
             this.element.dataset.favorited = false;
             this.element.setAttribute('fill', '#CED4DA');
         } else {
-            this.element.dataset.favorited = true;
-            this.element.setAttribute('fill', 'red');
+            axios.post(this.element.dataset.favoriteUrl, {
+                user_id: this.element.dataset.userId,
+                property_id: this.element.dataset.propertyId
+            }, { headers: {
+                'ACCEPT': 'application/json'
+            }})
+            .then((response) => {
+                console.log(response);
+                this.element.dataset.favorited = true;
+                this.element.setAttribute('fill', 'red');
+            });
         }
     }
 }
