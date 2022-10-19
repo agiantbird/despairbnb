@@ -7,8 +7,14 @@ export default class extends Controller {
            return document.querySelector('[data-header-target="userAuthLink"]').click();
         }
         if(this.element.dataset.favorited === 'true') {
-            this.element.dataset.favorited = false;
-            this.element.setAttribute('fill', '#CED4DA');
+            axios.delete(this.element.dataset.unfavoriteUrl, {
+                headers: {
+                    'ACCEPT': 'application/json'
+                }
+            }).then((response) => {
+                this.element.dataset.favorited = false;
+                this.element.setAttribute('fill', '#CED4DA');
+            })
         } else {
             axios.post(this.element.dataset.favoriteUrl, {
                 user_id: this.element.dataset.userId,
