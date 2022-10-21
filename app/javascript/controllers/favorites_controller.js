@@ -7,7 +7,7 @@ export default class extends Controller {
            return document.querySelector('[data-header-target="userAuthLink"]').click();
         }
         if(this.element.dataset.favorited === 'true') {
-            axios.delete(this.element.dataset.unfavoriteUrl, {
+            axios.delete(this.getUnfavoritePath(this.element.dataset.favoriteId), {
                 headers: {
                     'ACCEPT': 'application/json'
                 }
@@ -16,7 +16,7 @@ export default class extends Controller {
                 this.element.setAttribute('fill', '#CED4DA');
             })
         } else {
-            axios.post(this.element.dataset.favoriteUrl, {
+            axios.post(this.getFavoritePath(), {
                 user_id: this.element.dataset.userId,
                 property_id: this.element.dataset.propertyId
             }, { headers: {
@@ -28,5 +28,13 @@ export default class extends Controller {
                 this.element.setAttribute('fill', 'red');
             });
         }
+    }
+
+    getFavoritePath() {
+        return '/api/favorites';
+    }
+
+    getUnfavoritePath(favoriteId) {
+        return `/api/favorites/${favoriteId}`;
     }
 }
