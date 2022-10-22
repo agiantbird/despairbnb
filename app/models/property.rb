@@ -27,4 +27,10 @@ class Property < ApplicationRecord
   def default_image
     images.first
   end
+
+  def favorited_by?(user = nil)
+    return if user.nil?
+
+    favorited_users.include?(user)
+  end
 end
