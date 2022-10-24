@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Property < ApplicationRecord
   # Validations
   validates :name, presence: true
@@ -34,5 +35,13 @@ class Property < ApplicationRecord
     return if user.nil?
 
     favorited_users.include?(user)
+  end
+
+  def available_dates
+    next_reservation = reservations.future_reservations.first
+    date_format = "%b %e"
+    return Date.tomorrow.strftime(date_format)..Date.today.end_of_year.strftime(date_format) if next_reservation.nil?
+
+    Date.tomorrow.strftime(date_format)..next_reservation.reservation_date.strftime(date_format)
   end
 end
