@@ -56,6 +56,8 @@
   </div>
 </div>
 
+<%= render "shared/modal", modal_trigger_id: "share-modal-trigger", modal_content: "properties/share_property" %>
+
 <section>
   <div class="relative mx-auto max-w-screen-xl px-4 py-8">
     <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
@@ -338,5 +340,3 @@
     </div>
   </div>
 </section>
-
-<%= render "shared/modal", modal_trigger_id: "share-modal-trigger", modal_content: "properties/share_property" %>
