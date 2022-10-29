@@ -1,4 +1,7 @@
-<div>
+<div
+  data-controller="share-modal"
+  data-share-url="<%= url_for(only_path: false) %>"
+>
   <div class="flex mb-5">
     <div class="flex-none cursor-pointer hover:bg-gray-100" data-modal-target="closeButton">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -40,7 +43,7 @@
     </article>
 
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <div class="relative rounded-lg border border-gray-200 bg-white px-6 py-5 shadow-sm flex items-center">
+      <div data-action="click->share-modal#shareFrogSpace" class="relative rounded-lg border border-gray-200 bg-white px-6 py-5 shadow-sm flex items-center">
         <div class="flex-shrink-0">
           <img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/DCTM_Penguin_UK_DK_AL202555_liuy4y.jpg" alt="" class="h-10 w-10 rounded-full">
         </div>
@@ -53,7 +56,7 @@
           </a>
         </div>
       </div>
-      <div class="relative rounded-lg border border-gray-200 bg-white px-6 py-5 shadow-sm flex items-center">
+      <div data-action="click->share-modal#putInGrossBucket" class="relative rounded-lg border border-gray-200 bg-white px-6 py-5 shadow-sm flex items-center">
         <div class="flex-shrink-0">
             <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ed4682d5-1fe9-41e7-9c35-18fe17835ef9/d5627d1-63206557-c222-46be-909e-3196e67e81be.png/v1/fill/w_900,h_1276,strp/rusty_bucket_by_digimaree_d5627d1-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI3NiIsInBhdGgiOiJcL2ZcL2VkNDY4MmQ1LTFmZTktNDFlNy05YzM1LTE4ZmUxNzgzNWVmOVwvZDU2MjdkMS02MzIwNjU1Ny1jMjIyLTQ2YmUtOTA5ZS0zMTk2ZTY3ZTgxYmUucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.Ndxqk_wrBCet02AhcNCSfs5bpMFab9_2q2ZsTbnsigA" alt="" class="h-10 w-10">
         </div>
@@ -66,7 +69,7 @@
           </a>
         </div>
       </div>
-      <div class="relative rounded-lg border border-gray-200 bg-white px-6 py-5 shadow-sm flex items-center">
+      <div data-action="click->share-modal#shareEmail" class="relative rounded-lg border border-gray-200 bg-white px-6 py-5 shadow-sm flex items-center">
         <div class="flex-shrink-0">
           <img src="https://i.imgur.com/ukxaIwF.png" alt="" class="h-10 w-10">
         </div>
@@ -79,7 +82,7 @@
           </a>
         </div>
       </div>
-      <div class="relative rounded-lg border border-gray-200 bg-white px-6 py-5 shadow-sm flex items-center">
+      <div data-action="click->share-modal#copyLink" class="relative rounded-lg border border-gray-200 bg-white px-6 py-5 shadow-sm flex items-center">
         <div class="flex-shrink-0">
           <img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/copy-link-icon.png" alt="" class="h-8 w-8">
         </div>
@@ -87,7 +90,7 @@
           <a href="#" class="focus:outline-none">
             <span class="absolute inset-0" aria-hidden="true"></span>
             <p class="px-2 text-sm font-medium text-gray-900">
-              throw a rock at someone. i mean copy link
+              copy listing link
             </p>
           </a>
         </div>
