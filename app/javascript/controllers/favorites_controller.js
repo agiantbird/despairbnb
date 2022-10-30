@@ -22,7 +22,8 @@ export default class extends Controller {
         return `/api/favorites/${favoriteId}`;
     }
 
-    favorite() {
+    favorite(e) {
+        e.preventDefault();
         axios.post(this.getFavoritePath(), {
             user_id: this.element.dataset.userId,
             property_id: this.element.dataset.propertyId
@@ -32,17 +33,18 @@ export default class extends Controller {
         .then((response) => {
             this.element.dataset.favorited = true;
             this.element.dataset.favoriteId = response.data.id;
-            this.element.setAttribute('fill', 'red');
+            this.element.setAttribute('fill', this.element.dataset.favoritedColor);
         });
     }
 
     unfavorite() {
+        e.preventDefault();
         axios.delete(this.getUnfavoritePath(this.element.dataset.favoriteId), {
             headers: this.HEADERS
         }).then((response) => {
             this.element.dataset.favorited = false;
             this.element.dataset.favoriteId = '';
-            this.element.setAttribute('fill', '#CED4DA');
+            this.element.setAttribute('fill', this.element.dataset.unfavoritedColor);
         });
     }
 }
