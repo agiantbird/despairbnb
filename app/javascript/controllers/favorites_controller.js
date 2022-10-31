@@ -3,7 +3,8 @@ import axios from 'axios';
 
 export default class extends Controller {
     HEADERS = { 'ACCEPT': 'application/json' }
-    toggleFavorite() {
+    toggleFavorite(e) {
+        e.preventDefault();
         if(this.element.dataset.userLoggedIn === "false") {
            return document.querySelector('[data-header-target="userAuthLink"]').click();
         }
@@ -22,8 +23,7 @@ export default class extends Controller {
         return `/api/favorites/${favoriteId}`;
     }
 
-    favorite(e) {
-        e.preventDefault();
+    favorite() {
         axios.post(this.getFavoritePath(), {
             user_id: this.element.dataset.userId,
             property_id: this.element.dataset.propertyId
@@ -38,7 +38,6 @@ export default class extends Controller {
     }
 
     unfavorite() {
-        e.preventDefault();
         axios.delete(this.getUnfavoritePath(this.element.dataset.favoriteId), {
             headers: this.HEADERS
         }).then((response) => {
