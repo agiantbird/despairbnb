@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   # Associations
   belongs_to :reviewable, polymorphic: true, counter_cache: true
+  belongs_to :user
   # Validations
   validates :title, presence: true
   validates :body, presence: true
