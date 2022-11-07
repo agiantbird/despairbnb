@@ -1,7 +1,14 @@
-me = User.create(email: "rich@example.com", password: "password", first_name: "Rich", last_name: "Birdman")
+user_pictures = []
 
-5.times do
-  User.create(email: Faker::Internet.unique.email, password: "password", first_name: Faker::Name.unique.first_name, last_name: Faker::Name.unique.last_name)
+6.times do
+  user_pictures << URI.parse(Faker::LoremFlickr.image).open
+end
+me = User.create(email: "rich@example.com", password: "password", first_name: "Rich", last_name: "Birdman")
+me.picture.attach(io: user_pictures[0], filename: "#{me.full_name}.jpg")
+
+5.times do|i|
+  user = User.create(email: Faker::Internet.unique.email, password: "password", first_name: Faker::Name.unique.first_name, last_name: Faker::Name.unique.last_name)
+  user.picture.attach(io: user_pictures[i + 1], filename: "#{user.full_name}.jpg")
 end
 
 10.times do |i|

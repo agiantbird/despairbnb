@@ -37,6 +37,7 @@
       <% @property.reviews.includes(:user).each do |review| %>
         <blockquote>
           <header class="sm:flex sm:items-center">
+            <%= image_tag review.user.picture, class: "h-12 w-12 rounded-full", alt: review.user.full_name %>
             <%
               review_star_classes = ["text-gray-300", "text-gray-300", "text-gray-300", "text-gray-300", "text-gray-300"]
 
