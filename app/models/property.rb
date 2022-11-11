@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 class Property < ApplicationRecord
+  CLEANING_FEE = 5_000.freeze
+  CLEANING_FEE_MONEY = Money.new(CLEANING_FEE)
+  SERVICE_FEE_PERCENTAGE = (0.08).freeze
   # Validations
   validates :name, presence: true
   validates :headline, presence: true
