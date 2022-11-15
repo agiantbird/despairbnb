@@ -13,6 +13,7 @@
     data-controller="reservation-component"
     data-default-checkin-date="<%= Date.tomorrow.to_formatted_s(:us_short_date) %>"
     data-default-checkout-date="<%= (Date.tomorrow + 1.day).to_formatted_s(:us_short_date) %>"
+    data-nightly-price="<%= humanized_money(@property.price) %>"
   >
     <div class="grid grid-cols-1 md:grid-cols-1">
       <div class="bg-white py-12 md:py-18">
@@ -65,8 +66,8 @@
           </fieldset>
           <dl class="space-y-6">
             <div class="flex items-center justify-between">
-              <dt class="text-sm"><%= humanized_money_with_symbol(@property.price) %> x 7 nights</dt>
-              <dd class="text-sm font-medium text-gray-900">$3,115</dd>
+              <dt class="text-sm"><%= humanized_money_with_symbol(@property.price) %> x <span data-reservation-component-target="numOfNights">1</span> night(s)</dt>
+              <dd class="text-sm font-medium text-gray-900">$<span data-reservation-component-target="nightlyTotal">60</span></dd>
             </div>
             <div class="flex items-center justify-between">
               <dt class="text-sm">Cleaning Fee</dt>
