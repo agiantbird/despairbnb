@@ -3,7 +3,7 @@ import { Datepicker } from 'vanillajs-datepicker';
 import { isEmpty } from 'lodash-es';
 
 export default class extends Controller {
-    static targets = ['checkin', 'checkout', 'numOfNights', 'nightlyTotal'];
+    static targets = ['checkin', 'checkout', 'numOfNights', 'nightlyTotal', 'serviceFee', 'total'];
     connect() {
         console.log('data-nightly-price: ', this.element.dataset.nightlyPrice);
         const checkinPicker = new Datepicker(this.checkinTarget, {
@@ -36,9 +36,26 @@ export default class extends Controller {
         });
     }
 
+    calculateNightlyTotal() {
+        return this.numberOfNights() * this.element.dataset.nightlyPrice;
+    }
     updateNightlyTotal() {
         this.numOfNightsTarget.textContent = this.numberOfNights();
-        this.nightlyTotalTarget.textContent = this.numberOfNights() * this.element.dataset.nightlyPrice;
+        this.nightlyTotalTarget.textContent = this.calculateNightlyTotal();
+        this.updateServiceFee(this.calculateNightlyTotal());
+    }
+
+    calculateServiceFee() {
+        return (this.calculateNightlyTotal() * this.element.dataset.serviceFeePercentage).toFixed(2);
+    }
+
+    updateServiceFee() {
+        this.serviceFeeTarget.textContent = this.calculateServiceFee() ;
+        this.updateTotal();
+    }
+
+    updateTotal() {
+        this.totalTarget.textContent = (+this.calculateNightlyTotal() + +this.element.dataset.cleaningFee + +this.calculateServiceFee()).toFixed(2);
     }
 
     numberOfNights() {

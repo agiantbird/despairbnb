@@ -14,6 +14,8 @@
     data-default-checkin-date="<%= Date.tomorrow.to_formatted_s(:us_short_date) %>"
     data-default-checkout-date="<%= (Date.tomorrow + 1.day).to_formatted_s(:us_short_date) %>"
     data-nightly-price="<%= humanized_money(@property.price) %>"
+    data-service-fee-percentage="<%= Property::SERVICE_FEE_PERCENTAGE %>"
+    data-cleaning-fee="<%= humanized_money(Property::CLEANING_FEE_MONEY) %>"
   >
     <div class="grid grid-cols-1 md:grid-cols-1">
       <div class="bg-white py-12 md:py-18">
@@ -75,11 +77,11 @@
             </div>
             <div class="flex items-center justify-between">
               <dt class="text-sm">Service Fee</dt>
-              <dd class="text-sm font-medium text-gray-900">$5</dd>
+              <dd class="text-sm font-medium text-gray-900" >$<span data-reservation-component-target="serviceFee">5</span></dd>
             </div>
             <div class="flex items-center justify-between">
               <dt class="text-sm">Total</dt>
-              <dd class="text-sm font-medium text-gray-900">$3,184</dd>
+              <dd class="text-sm font-medium text-gray-900">$<span data-reservation-component-target="total">3,184</span></dd>
             </div>
           </dl>
 
