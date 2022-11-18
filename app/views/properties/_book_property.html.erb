@@ -88,7 +88,14 @@
           <div class="mt-12">
             <div class="flow-root -my-4 divide-y divide-gray-200">
               <div class="border-t border-gray-200 pt-6">
-                <button type="submit" class="w-full bg-indigo-600 border border-transparent rounded-md font-medium shadow-sm py-3 px-4 text-white">submit</button>
+                <button
+                  data-submit-url="<%= new_property_reservation_path(@property) %>"
+                  data-action="reservation-component#submitReservationComponent"
+                  type="submit"
+                  class="w-full bg-indigo-600 border border-transparent rounded-md font-medium shadow-sm py-3 px-4 text-white"
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </div>
