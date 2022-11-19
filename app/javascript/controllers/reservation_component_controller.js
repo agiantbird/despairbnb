@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 import { Datepicker } from 'vanillajs-datepicker';
 import { isEmpty } from 'lodash-es';
+import Swal from 'sweetalert2';
 
 export default class extends Controller {
     static targets = ['checkin', 'checkout', 'numOfNights', 'nightlyTotal', 'serviceFee', 'total'];
@@ -90,7 +91,16 @@ export default class extends Controller {
         return `${url}?${this.buildReservationParams()}`;
     }
 
+
+
     submitReservationComponent(e) {
-      Turbo.visit(this.buildSubmitUrl(e.target.dataset.submitUrl));
+        if (isEmpty(this.checkinTarget.value) || isEmpty(this.checkoutTarget.value)) {
+            Swal.fire({
+                text: 'Please add a checkin and checkout date',
+                icon: 'error'
+            });
+            return;
+        }
+        Turbo.visit(this.buildSubmitUrl(e.target.dataset.submitUrl));
     }
 }
