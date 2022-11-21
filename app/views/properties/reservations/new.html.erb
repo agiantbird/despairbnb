@@ -28,31 +28,31 @@
           <div class="border-t border-gray-200 py-6 px-4 space-y-6 sm:px-6">
             <div class="flex items-center justify-between">
               <dt class="text-sm">Checkin</dt>
-              <dd class="text-sm font-medium text-gray-900">11/20/22</dd>
+              <dd class="text-sm font-medium text-gray-900"><%= @checkin_date %></dd>
             </div>
 
             <div class="flex items-center justify-between">
               <dt class="text-sm">Checkout</dt>
-              <dd class="text-sm font-medium text-gray-900">11/26/22</dd>
+              <dd class="text-sm font-medium text-gray-900"><%= @checkout_date %></dd>
             </div>
 
             <div class="flex items-center justify-between">
-              <dt class="text-sm">$25 x 4 nights</dt>
-              <dd class="text-sm font-medium text-gray-900">$100.00</dd>
+              <dt class="text-sm"><%= humanized_money_with_symbol(@property.price) %> x <%= (Date.strptime(@checkout_date, Date::DATE_FORMATS[:us_short_date]).mjd - Date.strptime(@checkin_date, Date::DATE_FORMATS[:us_short_date]).mjd) %> days</dt>
+              <dd class="text-sm font-medium text-gray-900">$<%= @subtotal %></dd>
             </div>
 
             <div class="flex items-center justify-between">
               <dt class="text-sm">Cleaning fee</dt>
-              <dd class="text-sm font-medium text-gray-900">$20.00</dd>
+              <dd class="text-sm font-medium text-gray-900">$<%= @cleaning_fee %></dd>
             </div>
             <div class="flex items-center justify-between">
               <dt class="text-sm">Service fee</dt>
-              <dd class="text-sm font-medium text-gray-900">$20.00</dd>
+              <dd class="text-sm font-medium text-gray-900">$<%= @service_fee %></dd>
             </div>
 
             <div class="flex items-center border-t justify-between">
               <dt class="text-sm pt-4">Total</dt>
-              <dd class="text-sm pt-4 font-medium text-gray-900">$20.00</dd>
+              <dd class="text-sm pt-4 font-medium text-gray-900">$<%= @total %></dd>
             </div>
           </div>
 
