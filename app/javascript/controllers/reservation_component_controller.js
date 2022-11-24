@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 export default class extends Controller {
     static targets = ['checkin', 'checkout', 'numOfNights', 'nightlyTotal', 'serviceFee', 'total'];
     connect() {
-        console.log('data-nightly-price: ', this.element.dataset.nightlyPrice);
         const checkinPicker = new Datepicker(this.checkinTarget, {
             minDate: this.element.dataset.defaultCheckinDate
         });
@@ -21,7 +20,6 @@ export default class extends Controller {
             checkoutPicker.setOptions({
                 minDate: date
             });
-            console.log(this.numberOfNights());
 
             this.updateNightlyTotal();
         });
@@ -32,7 +30,6 @@ export default class extends Controller {
             checkinPicker.setOptions({
                 maxDate: date
             });
-            console.log(this.numberOfNights());
             this.updateNightlyTotal();
         });
     }
