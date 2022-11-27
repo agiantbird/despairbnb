@@ -7,7 +7,7 @@
   plugins: [require('@tailwindcss/forms')]
 -->
 
-<section>
+<section data-controller="stripe-elements">
   <h1 class="sr-only">Checkout</h1>
 
   <div class="relative mx-auto max-w-screen-2xl">
@@ -79,65 +79,14 @@
                 id="last_name"
                 />
             </div>
-
             <fieldset class="col-span-6">
-<!--              <legend class="mb-1 block text-sm text-gray-600">-->
-<!--                Card Details-->
-<!--              </legend>-->
-
-              <div class="-space-y-px rounded-lg bg-white shadow-sm">
-                <%= stripe_elements_tag submit_path: "/" %>
+              <div class="-space-y-px rounded-lg bg-white shadow-sm" id="stripe-form">
+                <%= stripe_elements_tag submit_path: "/", css_path: stylesheet_path("stripe_elements_form")  %>
                 <div>
                   <label class="sr-only" for="card-number">Card Number</label>
-
-<!--                  <input-->
-<!--                    class="relative w-full rounded-t-lg border-gray-200 p-2.5 text-sm placeholder-gray-400 focus:z-10"-->
-<!--                    type="text"-->
-<!--                    name="card-number"-->
-<!--                    id="card-number"-->
-<!--                    placeholder="Card number"-->
-<!--                    />-->
                 </div>
               </div>
-
-<!--                <div class="flex -space-x-px">-->
-<!--                  <div class="flex-1">-->
-<!--                    <label class="sr-only" for="card-expiration-date">-->
-<!--                      Expiration Date-->
-<!--                    </label>-->
-
-<!--                    <input-->
-<!--                      class="relative w-full rounded-bl-lg border-gray-200 p-2.5 text-sm placeholder-gray-400 focus:z-10"-->
-<!--                      type="text"-->
-<!--                      name="card-expiration-date"-->
-<!--                      id="card-expiration-date"-->
-<!--                      placeholder="MM / YY"-->
-<!--                      />-->
-<!--                  </div>-->
-
-<!--                  <div class="flex-1">-->
-<!--                    <label class="sr-only" for="card-cvc">CVC</label>-->
-
-<!--                    <input-->
-<!--                      class="relative w-full rounded-br-lg border-gray-200 p-2.5 text-sm placeholder-gray-400 focus:z-10"-->
-<!--                      type="text"-->
-<!--                      name="card-cvc"-->
-<!--                      id="card-cvc"-->
-<!--                      placeholder="CVC"-->
-<!--                      />-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
             </fieldset>
-
-<!--            <div class="col-span-6">-->
-<!--              <button-->
-<!--                class="block w-full rounded-lg bg-black p-2.5 text-sm text-white"-->
-<!--                type="submit"-->
-<!--              >-->
-<!--                Pay Now-->
-<!--              </button>-->
-<!--            </div>-->
           </form>
         </div>
       </div>
