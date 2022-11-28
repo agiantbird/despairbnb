@@ -6,7 +6,7 @@
       <%
         property_star_classes = ["text-gray-300", "text-gray-300", "text-gray-300", "text-gray-300", "text-gray-300"]
 
-        @property.average_rating.round(0).times do |index|
+        (@property.average_rating&.round(0) || 0).times do |index|
           property_star_classes[index] = "text-yellow-400"
         end
       %>
@@ -27,7 +27,7 @@
           <% end %>
         </div>
         <p class="text-lg text-gray-700">
-          <%= @property.average_rating.round(0) %> out of 5 stars • Based on <%= pluralize(@property.reviews_count.to_i, 'review') %>
+          <%= @property.average_rating&.round(0) || 0 %> out of 5 stars • Based on <%= pluralize(@property.reviews_count.to_i, 'review') %>
           <% puts @property.reviews_count %>
         </p>
       </div>
