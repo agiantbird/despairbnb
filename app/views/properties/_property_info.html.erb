@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
       <% if @property.default_image.present? %>
         <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
-        < %= image_tag @property.default_image, class: "aspect-square w-full rounded-xl object-cover" %>
+        <%= image_tag @property.default_image, class: "aspect-square w-full rounded-xl object-cover" %>
         </div>
       <% end %>
 
