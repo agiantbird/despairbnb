@@ -16,7 +16,7 @@ module Properties
     def new_reservation_params
       params.permit(
         :checkin_date, :checkout_date, :subtotal, :cleaning_fee,
-          :service_fee, :total
+          :service_fee, :total, :property
       )
     end
   end
