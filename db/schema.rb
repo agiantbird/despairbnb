@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_02_222423) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_203146) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222423) do
     t.index ["property_id", "user_id"], name: "index_favorites_on_property_id_and_user_id", unique: true
     t.index ["property_id"], name: "index_favorites_on_property_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "reservation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_payments_on_reservation_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -131,6 +138,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222423) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "properties"
   add_foreign_key "favorites", "users"
+  add_foreign_key "payments", "reservations"
   add_foreign_key "profiles", "users"
   add_foreign_key "reservations", "properties"
   add_foreign_key "reservations", "users"
