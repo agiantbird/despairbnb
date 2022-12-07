@@ -1,6 +1,7 @@
 class Reservation < ApplicationRecord
   belongs_to :property
   belongs_to :user
+  has_one :payment, dependent: :destroy
 
   # validates :reservation_date, presence: true
 

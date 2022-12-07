@@ -24,6 +24,7 @@ class Property < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
   has_many :reservations, dependent: :destroy
+  has_many :payments, through: :reservations
   has_many :reserved_users, through: :reservations, source: :user
 
   def address
