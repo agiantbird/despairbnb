@@ -1,41 +1,64 @@
 <!--
-  This component uses @tailwindcss/forms
+  This example requires Tailwind CSS v2.0+
 
-  yarn add @tailwindcss/forms
-  npm install @tailwindcss/forms
+  This example requires some changes to your config:
 
-  plugins: [require('@tailwindcss/forms')]
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
 -->
+<div class="bg-gray-50" data-controller="stripe-elements">
+  <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h2 class="sr-only">Checkout</h2>
 
-<section data-controller="stripe-elements">
-  <h1 class="sr-only">Checkout</h1>
+    <div class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+      <div class="mt-10 lg:mt-0">
+        <!-- Payment -->
+        <h2 class="text-lg font-medium text-gray-900">Payment</h2>
 
-  <div class="relative mx-auto max-w-screen-2xl">
-    <div class="grid grid-cols-1 md:grid-cols-2">
-      <div class="bg-gray-50 py-12 md:py-24">
-        <div class="mx-auto max-w-lg px-4 lg:px-8">
-          <div class="flex items-center mb-2">
-            <span class="h-7 w-7 rounded-md bg-purple-900"></span>
+        <%=
+          stripe_elements_tag(
+            submit_path: reservation_payments_path(
+              property_id: @property.id,
+              user_id: current_user.id,
+              checkin_date: @checkin_date,
+              checkout_date: @checkout_date,
+              subtotal: @subtotal,
+              cleaning_fee: @cleaning_fee,
+              service_fee: @service_fee,
+              total: @total
+            )
+          )
+        %>
+      </div>
 
-            <h2 class="ml-4 font-medium">Time to pay</h2>
-          </div>
+      <!-- Reservation Details -->
+      <div class="mt-10 lg:mt-0">
+        <h2 class="text-lg font-medium text-gray-900">Your Reservation</h2>
 
-          <div class="border-t border-gray-200 py-6 px-4 space-y-6 sm:px-6">
+        <div class="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+          <h3 class="sr-only">Items in your cart</h3>
+
+          <dl class="border-t border-gray-200 py-6 px-4 space-y-6 sm:px-6">
             <div class="flex items-center justify-between">
-              <dt class="text-sm">Checkin</dt>
+              <dt class="text-sm">Check in</dt>
               <dd class="text-sm font-medium text-gray-900"><%= @checkin_date %></dd>
             </div>
-
             <div class="flex items-center justify-between">
-              <dt class="text-sm">Checkout</dt>
+              <dt class="text-sm">Check out</dt>
               <dd class="text-sm font-medium text-gray-900"><%= @checkout_date %></dd>
             </div>
-
             <div class="flex items-center justify-between">
-<!--              <dt class="text-sm"><%#= (@property.price) %> x <%#= (Date.strptime(@checkout_date, Date::DATE_FORMATS[:us_short_date]).mjd - Date.strptime(@checkin_date, Date::DATE_FORMATS[:us_short_date]).mjd) %> days</dt>-->
+<!--              <dt class="text-sm"><%#= humanized_money_with_symbol(@property.price) %> x <%#= Date.strptime(@checkout_date, Date::DATE_FORMATS[:us_short_date]).mjd - Date.strptime(@checkin_date, Date::DATE_FORMATS[:us_short_date]).mjd %> nights</dt>-->
               <dd class="text-sm font-medium text-gray-900">$<%= @subtotal %></dd>
             </div>
-
             <div class="flex items-center justify-between">
               <dt class="text-sm">Cleaning fee</dt>
               <dd class="text-sm font-medium text-gray-900">$<%= @cleaning_fee %></dd>
@@ -44,67 +67,13 @@
               <dt class="text-sm">Service fee</dt>
               <dd class="text-sm font-medium text-gray-900">$<%= @service_fee %></dd>
             </div>
-
-            <div class="flex items-center border-t justify-between">
-              <dt class="text-sm pt-4">Total</dt>
-              <dd class="text-sm pt-4 font-medium text-gray-900">$<%= @total %></dd>
+            <div class="flex items-center justify-between border-t border-gray-200 pt-6">
+              <dt class="text-base font-medium">Total</dt>
+              <dd class="text-base font-medium text-gray-900">$<%= @total %></dd>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white py-12 md:py-24">
-        <div class="mx-auto max-w-lg px-4 lg:px-8">
-          <form class="grid grid-cols-6 gap-4">
-            <div class="col-span-3">
-              <label class="mb-1 block text-sm text-gray-600" for="first_name">
-                First Name
-              </label>
-
-              <input
-                class="w-full rounded-lg border-gray-200 p-2.5 text-sm shadow-sm"
-                type="text"
-                id="first_name"
-                />
-            </div>
-
-            <div class="col-span-3">
-              <label class="mb-1 block text-sm text-gray-600" for="last_name">
-                Last Name
-              </label>
-
-              <input
-                class="w-full rounded-lg border-gray-200 p-2.5 text-sm shadow-sm"
-                type="text"
-                id="last_name"
-                />
-            </div>
-            <fieldset class="col-span-6">
-              <div class="-space-y-px rounded-lg bg-white shadow-sm" id="stripe-form">
-                <%=
-                  stripe_elements_tag(
-                    submit_path: reservation_payments_path(
-                      origin: 'http://localhost:3000',
-                      property_id: @property.id,
-                      user_id: current_user.id,
-                      checkin_date: @checkin_date,
-                      checkout_date: @checkout_date,
-                      subtotal: @subtotal,
-                      cleaning_fee: @cleaning_fee,
-                      service_fee: @service_fee,
-                      total: @total,
-                    ),
-                    css_path: stylesheet_path("stripe_elements_form")
-                  )
-                %>
-                <div>
-                  <label class="sr-only" for="card-number">Card Number</label>
-                </div>
-              </div>
-            </fieldset>
-          </form>
+          </dl>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
