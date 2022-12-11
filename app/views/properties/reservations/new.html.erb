@@ -56,7 +56,7 @@
               <dd class="text-sm font-medium text-gray-900"><%= @checkout_date %></dd>
             </div>
             <div class="flex items-center justify-between">
-<!--              <dt class="text-sm"><%#= humanized_money_with_symbol(@property.price) %> x <%#= Date.strptime(@checkout_date, Date::DATE_FORMATS[:us_short_date]).mjd - Date.strptime(@checkin_date, Date::DATE_FORMATS[:us_short_date]).mjd %> nights</dt>-->
+              <dt class="text-sm"><%= humanized_money_with_symbol(@property.price) %> x <%= Date.strptime(@checkout_date, Date::DATE_FORMATS[:us_short_date]).mjd - Date.strptime(@checkin_date, Date::DATE_FORMATS[:us_short_date]).mjd %> nights</dt>
               <dd class="text-sm font-medium text-gray-900">$<%= @subtotal %></dd>
             </div>
             <div class="flex items-center justify-between">
