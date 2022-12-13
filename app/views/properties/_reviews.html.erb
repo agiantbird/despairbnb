@@ -28,7 +28,7 @@
         </div>
         <p class="text-lg text-gray-700">
           <%= @property.average_rating&.round(0) || 0 %> out of 5 stars • Based on <%= pluralize(@property.reviews_count.to_i, 'review') %>
-          <% puts @property.reviews_count %>
+          <%  @property.reviews_count %>
         </p>
       </div>
     </div>

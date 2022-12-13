@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ReservationPaymentsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   def create
     stripe_card = Stripe::Customer.create_source(
       stripe_customer.id,
