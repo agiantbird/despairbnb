@@ -143,10 +143,17 @@
               <div class="p-2 divide-y divide-gray-100">
                 <div class="py-1" role="none">
                   <% if user_signed_in? %>
+                    <%= link_to "My Profile", new_user_session_path, class: "block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700" %>
                     <%= link_to "Log out", destroy_user_session_path, class: "block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700", data: {"turbo-method": :delete}%>
+                    <div class="py-1" role="none">
+                      <%= link_to "Host your home", "#", class: "block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700", role: "menuitem", tabindex: "-1", id: "user-menu-item-0" %>
+                    </div>
                   <% else %>
                     <%= link_to "Sign Up", new_user_registration_path, class: "block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700" %>
                     <%= link_to "Log In", new_user_session_path, class: "block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700" %>
+                    <div class="py-1" role="none">
+                      <%= link_to "Host your home", new_user_registration_path, class: "block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700", role: "menuitem", tabindex: "-1", id: "user-menu-item-0" %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -168,5 +175,3 @@
     </nav>
   </div>
 </header>
-
-<%= render "shared/modal", modal_trigger_id: "user-auth-modal-trigger", modal_content: "home/user_auth_form" %>
