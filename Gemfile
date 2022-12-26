@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.1"
 gem "bootsnap", require: false
+gem "country_select", '~> 6.0'
 gem "devise"
 gem "geocoder"
 gem "importmap-rails"
